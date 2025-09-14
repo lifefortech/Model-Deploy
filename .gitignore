@@ -1,0 +1,23 @@
+
+# CMake related
+[Bb]uild/
+[Bb]uild*/
+*.cmake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+
+# Visual Studio
+.vs/
+*.sln
+*.vcxproj*
+*.VC.db
+
+# Binaries
+*.dll
+*.so
+*.exe
+*.lib
+*.a
