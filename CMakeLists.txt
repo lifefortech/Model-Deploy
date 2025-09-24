@@ -11,7 +11,7 @@ find_package(OpenCV REQUIRED)
 
 
 # 查找 TensorRT
-set(TENSORRT_DIR "G:/environment/TensorRT-10.10.0.31")
+set(TENSORRT_DIR "D:/Environment/TensorRT-10.7.0.23")
 message(STATUS "Using hardcoded TensorRT path: ${TENSORRT_DIR}")
 
 

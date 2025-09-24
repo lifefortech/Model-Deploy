@@ -27,7 +27,7 @@ This project wraps a TensorRT semantic segmentation engine into a DLL with a C-s
     **On Windows (with Visual Studio 2019):**
     ```bash
     # Generate solution files
-    cmake .. -G "Visual Studio 16 2019" -A x64
+    cmake .. -G "Visual Studio 17 2022" -A x64
 
     # Build the project (Debug or Release)
     cmake --build . --config Release

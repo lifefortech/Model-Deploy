@@ -117,11 +117,18 @@ int TRTSegmentation::run(const std::string& image_path, const std::string& outpu
     const int original_height = image.rows;
     const int original_width = image.cols;
 
-    const int target_size = 512;
-    cv::Mat resized_image;
-    cv::resize(image, resized_image, cv::Size(target_size, target_size));
+    // --- 修改开始 ---
 
-    if (!this->context_->setInputShape(this->input_tensor_name_.c_str(), nvinfer1::Dims4{1, 3, target_size, target_size})) {
+    // 1. 定义明确的目标高度和宽度
+    const int target_height = 256;
+    const int target_width = 2048;
+
+    cv::Mat resized_image;
+    // 2. 调用 cv::resize 时，cv::Size 的参数顺序为 (宽度, 高度)
+    cv::resize(image, resized_image, cv::Size(target_width, target_height));
+
+    // 3. 设置 TensorRT 的输入维度，顺序为 (N, C, H, W)，即 (批量, 通道, 高度, 宽度)
+    if (!this->context_->setInputShape(this->input_tensor_name_.c_str(), nvinfer1::Dims4{1, 3, target_height, target_width})) {
         std::cerr << "Error: Failed to set input shape." << std::endl;
         return -1;
     }
